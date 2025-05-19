@@ -14,6 +14,15 @@ CREATE DATABASE novo
     IS_TEMPLATE = False;
 	
 -- Table: public.alunos
+DROP SEQUENCE IF EXISTS public.alunos_id_seq;
+
+CREATE SEQUENCE IF NOT EXISTS public.alunos_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
 
 DROP TABLE IF EXISTS public.alunos;
 
