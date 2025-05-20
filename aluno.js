@@ -6,6 +6,8 @@ const modalNomeAluno = document.getElementById('aluno-nome');
 const modalMatriculaAluno = document.getElementById('aluno-matricula');
 const modalIDAluno = document.getElementById('aluno-id');
 const botaoExcluir = document.getElementById('btn-excluir');
+const botaoSalvar = document.getElementById('btn-salvar')
+botaoSalvar.addEventListener('click', atualizarAlunos)
 botaoExcluir.addEventListener('click',excluirAluno)
 
 
@@ -16,6 +18,17 @@ function mostrarDetalhes(nome,matricula,id){
     modalNomeAluno.value = nome ;
 }
 
+async function atualizarAlunos() {
+    const pId = modalIDAluno.value
+    const pNome = modalNomeAluno.value
+    const pMatricula = modalMatriculaAluno.value
+    const retorno = await window.senacAPI.atualizarAlunosPreload(pId,pNome,pMatricula)
+    modalIDAluno.value = ''
+    modalMatriculaAluno.value = ''
+    modalNomeAluno.value = ''
+    //após deleção atualiza a lista de alunos
+    carregarAlunos();
+}
 
 
 async function excluirAluno(){
@@ -23,7 +36,9 @@ async function excluirAluno(){
     console.log("vou deletar o id ", pID);
 
     const retorno = await window.senacAPI.excluirAlunos(pID);
-
+    modalIDAluno.value = ''
+    modalMatriculaAluno.value = ''
+    modalNomeAluno.value = ''
     //após deleção atualiza a lista de alunos
     carregarAlunos();
 }
@@ -83,6 +98,8 @@ function criarLinhaAluno(aluno){
 
     //final adiciono a linha criada com matricula,nome e botao à tabela
     tabelaAluno.appendChild(linha);
+
+    
 
 }
 
