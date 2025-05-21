@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Lista de Alunos</title>
 
      <script src="https://unpkg.com/lucide@latest"></script>
+     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <h1>Cadastro de alunos</h1>
     <p id="teste"></p>
-
+     <button id="btn-limpar"><i data-lucide="circle plus"></i></button>
+     
     <table id="alunosTable">
         <thead>
             <tr>
@@ -25,7 +29,8 @@
     <!--modal-->
     <div id="modal" >
         <h3>Edite os dados do Aluno:</h3>
-
+        
+        <br>
         <label>ID: <input type="text" id="aluno-id" readonly /> 
         </label>
         <br>
@@ -35,27 +40,11 @@
         <labe>Matricula: <input type="text" id="aluno-matricula">
         </label>
         <br>
-        <button id="btn-salvar">Salvar</button>
-        <button id="btn-excluir">Excluir</button>
+        <button id="btn-salvar"><i data-lucide="save"></i></button>
+        <button id="btn-excluir"><i data-lucide="trash"></i></button>
     </div>
 
-     <style>
-      table {
-        border: 1px inset black;
-        border-collapse: collapse; /* Evita bordas duplas */
-      }
-
-      td,
-      th {
-        border: 1px inset black;
-        border-color: rgb(
-          0,
-          0,
-          0
-        ); /* Adiciona algum espaço interno nas células */
-        padding: 5px;
-      }
-    </style>
+    
         
         
 

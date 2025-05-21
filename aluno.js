@@ -7,10 +7,18 @@ const modalMatriculaAluno = document.getElementById('aluno-matricula');
 const modalIDAluno = document.getElementById('aluno-id');
 const botaoExcluir = document.getElementById('btn-excluir');
 const botaoSalvar = document.getElementById('btn-salvar')
-botaoSalvar.addEventListener('click', atualizarAlunos)
+const botaoLimpar = document.getElementById('btn-limpar')
+
+botaoLimpar.addEventListener('click', limparAluno)
+botaoSalvar.addEventListener('click', salvarAluno)
 botaoExcluir.addEventListener('click',excluirAluno)
 
 
+function limparAluno(){
+    modalIDAluno.value = ''
+    modalMatriculaAluno.value = ''
+    modalNomeAluno.value = ''
+}
 
 function mostrarDetalhes(nome,matricula,id){
     modalIDAluno.value = id;
@@ -26,10 +34,32 @@ async function atualizarAlunos() {
     modalIDAluno.value = ''
     modalMatriculaAluno.value = ''
     modalNomeAluno.value = ''
+    console.log("atualizar ", pId, pNome, pMatricula);
     //após deleção atualiza a lista de alunos
     carregarAlunos();
 }
 
+async function inserirAluno(){
+    const pNome = modalNomeAluno.value;
+    const pMatricula = modalMatriculaAluno.value;
+
+    console.log("inserindo aluno", pNome, pMatricula);
+
+    const retorno = await window.senacAPI.addAlunosPreload(pNome,pMatricula);
+    carregarAlunos()
+}
+
+
+
+
+function salvarAluno() {
+    const pID = modalIDAluno.value;
+    if (pID) {
+        atualizarAlunos();
+    } else {
+        inserirAluno();
+    }
+}
 
 async function excluirAluno(){
     const pID = modalIDAluno.value;
@@ -84,11 +114,12 @@ function criarLinhaAluno(aluno){
     botao.addEventListener("click", 
                                     function () { mostrarDetalhes(aluno.nome,aluno.matricula,aluno.id)}
                                 );
-    botao.textContent = 'teste';    
+        
     
     const icone = document.createElement("i")
     icone.setAttribute("data-lucide", "edit");
     botao.appendChild(icone);
+    
 
     celulaBotao.appendChild(botao);
 
@@ -98,7 +129,7 @@ function criarLinhaAluno(aluno){
 
     //final adiciono a linha criada com matricula,nome e botao à tabela
     tabelaAluno.appendChild(linha);
-
+    
     
 
 }
