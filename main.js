@@ -6,6 +6,7 @@ function createMainWindow() {
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
+        icon : path.join(__dirname, 'assets', 'img.goku.jpg' ),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }

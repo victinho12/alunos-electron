@@ -10,7 +10,7 @@ const botaoSalvar = document.getElementById('btn-salvar')
 const botaoLimpar = document.getElementById('btn-limpar')
 
 botaoLimpar.addEventListener('click', limparAluno)
-botaoSalvar.addEventListener('click', salvarAluno)
+botaoSalvar.addEventListener('click', verificarAlunoAdd)
 botaoExcluir.addEventListener('click',excluirAluno)
 
 
@@ -50,7 +50,15 @@ async function inserirAluno(){
 }
 
 
-
+function verificarAlunoAdd(){
+    const pNome = modalNomeAluno.value
+    const pMatricula = modalMatriculaAluno.value
+    if (!pNome || !pMatricula){
+        console.log("Prencha todas as informações do aluno!")
+    }else{
+        salvarAluno()
+    }
+}
 
 function salvarAluno() {
     const pID = modalIDAluno.value;
