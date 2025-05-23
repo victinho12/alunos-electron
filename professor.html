@@ -4,40 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Lista de Alunos</title>
+    <title>Lista de Professores</title>
 
      <script src="https://unpkg.com/lucide@latest"></script>
-     <link rel="stylesheet" href="aluno.css">
+     <link rel="stylesheet" href="professor.css">
 </head>
 <body>
-    <h1>Cadastro de alunos</h1>
+    <h1>Cadastro de Professores</h1>
     <p id="teste"></p>
      <button id="btn-limpar"><i data-lucide="circle plus"></i></button>
      
-    <table id="alunosTable">
+    <table id="professorTable">
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Matricula</th>              
+                <th>Cpf</th>              
             </tr>
         </thead>
-        <tbody id="alunosTableDados">    
+        <tbody id="professorTableDados">    
         </tbody>
     </table>
 
 
     <!--modal-->
     <div id="modal" >
-        <h3>Edite os dados do Aluno:</h3>
+        <h3>Edite os dados do Professor:</h3>
         
         <br>
-        <label>ID: <input type="text" id="aluno-id" readonly /> 
+        <label>ID: <input type="text" id="professor-id" readonly /> 
         </label>
         <br>
-        <label>Nome: <input type="text" id="aluno-nome">       
+        <label>Nome: <input type="text" id="professor-nome">       
         </label>
          <br>
-        <labe>Matricula: <input type="text" id="aluno-matricula">
+        <labe>Cpf: <input type="text" id="professor-cpf">
         </label>
         <br>
         <button id="btn-salvar"><i data-lucide="save"></i></button>
@@ -49,6 +49,6 @@
         
 
 
-    <script src="aluno.js"></script>
+    <script src="Professor.js"></script>
 </body>
 </html>

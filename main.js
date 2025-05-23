@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const { registrarAlunoHandler } = require('./alunoHandler')
+const { registrarProfessorHandler } = require('./professorHendler')
 
 function createMainWindow() {
     const mainWindow = new BrowserWindow({
@@ -12,13 +12,13 @@ function createMainWindow() {
         }
     });
 
-    mainWindow.loadFile('aluno.html');
+    mainWindow.loadFile('professor.html');
 }
 
 app.whenReady().then(function () {
 
     createMainWindow();
-    registrarAlunoHandler();
+    registrarProfessorHandler();
 
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) {
